@@ -25,12 +25,11 @@ model.add(Dense(50,activation='relu',input_shape=(784,)))
 # Add the second hidden layer
 model.add(Dense(50,activation='relu'))
 
-# Add the second hidden layer
+# Add the third hidden layer
 model.add(Dense(50,activation='relu'))
 
-# Add the second hidden layer
+# Add the fourth hidden layer
 model.add(Dense(50,activation='relu'))
-
 
 # Add the output layer
 model.add(Dense(10,activation='softmax'))
@@ -45,11 +44,6 @@ early_stopping_monitor = EarlyStopping(patience=3)
 
 # Fit the model
 model.fit(predictors,target, validation_split=0.3, epochs = 40, callbacks = [early_stopping_monitor] )
-
-#ids = np.arange(1,785,1)
-#output = pd.DataFrame({'Label': predictions }, index=[1])
-#output.to_csv('hwdr_predictions.csv', index = False)
-#output.head()
 
 print("Generating test predictions...")
 preds = model.predict_classes(pred_data, verbose=0)
